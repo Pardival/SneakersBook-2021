@@ -1,15 +1,17 @@
 <template>
   <v-app>
-
-    <Header/>
-
     <v-main>
-      <v-row>
-        <v-col><SneakersCard/></v-col>
-        <v-col><SneakersCard/></v-col>
-        <v-col><SneakersCard/></v-col>
-        <v-col><SneakersCard/></v-col>
-    </v-row>
+      <Header/>
+      <v-container class=" lighten-5">
+        <v-row justify="center">
+          <v-col md="4" sm="6" xs="12"><SneakersCard/></v-col>
+          <v-col md="4" sm="6" xs="12"><SneakersCard/></v-col>
+          <v-col md="4" sm="6" xs="12"><SneakersCard/></v-col>
+          <v-col md="4" sm="6" xs="12"><SneakersCard/></v-col>
+          <v-col md="4" sm="6" xs="12"><SneakersCard/></v-col>
+          <v-col md="4" sm="6" xs="12"><SneakersCard/></v-col>
+        </v-row>
+      </v-container>
     </v-main>
   </v-app>
 </template>
