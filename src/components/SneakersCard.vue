@@ -1,13 +1,10 @@
 <template>
-    <v-card elevation="3"
-            
-           
-            >
+    <v-card elevation="3">
       <v-img height="250"
              :src="srcImg"></v-img>
       <v-card-title>{{modele}} {{name}}</v-card-title>
       <v-card-subtitle>
-        Par {{company[0].name}}<span v-for="ep in company" v-bind:key="ep.name"> X {{ep.name}}</span>
+        Par <span v-for="ep in company" v-bind:key="ep.name"> X {{ep.name}}</span>
       </v-card-subtitle>
        <v-card-actions>
           <v-spacer></v-spacer>
