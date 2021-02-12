@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import SneakersBio from '../views/SneakersBio.vue'
+import NotFound404 from '../views/NotFound404.vue'
 
 Vue.use(VueRouter)
 
@@ -13,10 +14,17 @@ const routes = [
   },
 
   {
-    path: '/sneakers',
+    path: '/sneakers/:id',
     name: 'Sneakers',
     component: SneakersBio
-  }
+  },
+
+  {
+    path: '*',
+    name: '404',
+    component: NotFound404
+  },
+
 ]
 
 const router = new VueRouter({
