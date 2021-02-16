@@ -5,7 +5,6 @@
     >
       <v-img
         src="https://images.wave.fr/images//nike_sb_dunk_low_ben_jerrys_date_sortie_infos_1.jpg"
-        height="300px"
         dark
       >
       </v-img>
