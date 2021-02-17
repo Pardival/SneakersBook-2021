@@ -6,7 +6,7 @@
                 <Galery :images="sneakersData.imgGalery"/>
             </v-col>
             <v-col xs="12" sm="5" md="4">
-                <SneakersBioCard />
+                <SneakersBioCard :data="sneakersData" />
                 <v-btn class="mt-10"
                       color="accent"
                       elevation="2">Apporter vos sources !</v-btn>
@@ -36,6 +36,7 @@
                     modele : "Yezzy Boost 700",
                     code: "775-SNK",
                     release: "2002",
+                    price: "200",
                     urlImg: "https://cdn.flightclub.com/TEMPLATE/135739/1.jpg",
                     title : "La chaussure de Kany WEST ! ",
                     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus placeat debitis  laborios am aliquam odit! Quis modi enim animi eius, quas similique quae commodi in, adipisci  blanditiis inventore sequi voluptatibus eveniet!",
@@ -55,7 +56,7 @@
                         },
 
                         {
-                            id: "454",
+                            id: "478",
                             urlImg: "https://cdn.flightclub.com/TEMPLATE/135739/1.jpg"
                         }
                     ]
