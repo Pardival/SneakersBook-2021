@@ -3,7 +3,7 @@
         <v-row class="ma-10">
             <v-col xs="12" sm="7" md="8">
                 <ParagraphBio :title="sneakersData.title" :description="sneakersData.description" />
-                <Galery images="sneakers.imgGalery"/>
+                <Galery :images="sneakersData.imgGalery"/>
             </v-col>
             <v-col xs="12" sm="5" md="4">
                 <SneakersBioCard />

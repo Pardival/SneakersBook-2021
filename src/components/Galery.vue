@@ -1,10 +1,16 @@
 <template>
     <v-row>
-        <v-col md="4" sm ="6" xs="12">
+        <v-col md="4" sm ="6" xs="12" v-for="image in images" v-bind:key="image.urlImg">
             <v-img
-                src="https://images.wave.fr/images//nike_sb_dunk_low_ben_jerrys_date_sortie_infos_1.jpg"
+                :src="image.urlImg"
                 dark>
             </v-img>
         </v-col>
     </v-row>
 </template>
+
+<script>
+    export default {
+        props: ['images'],
+}
+</script>
