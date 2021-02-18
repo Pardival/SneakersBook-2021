@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Admin from '../views/Admin.vue'
 import SneakersBio from '../views/SneakersBio.vue'
 import NotFound404 from '../views/NotFound404.vue'
 
@@ -17,6 +18,12 @@ const routes = [
     path: '/sneakers/:id',
     name: 'Sneakers',
     component: SneakersBio
+  },
+
+  {
+    path: '/admin',
+    name: 'Admin',
+    component : Admin
   },
 
   {
