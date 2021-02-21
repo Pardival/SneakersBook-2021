@@ -1,7 +1,7 @@
 <?php
     require_once('config.php');
 
-    if (isset($_POST['action'])) {
+    if (isset($_GET['action'])) {
         $action = htmlspecialchars($_POST['action']);
 
         $action($bdd);
@@ -12,7 +12,7 @@
      * @param $bdd connexion à la base de donnée
      * @return résultat de la requête
      */
-    function getSneakersCard($bdd) {
+    function getSneakersCards($bdd) {
         /* Contient la requête */
         $query = 'SELECT id_sneakers, nom, YEAR(date_sortie), url_couverture
                     FROM sneakers';

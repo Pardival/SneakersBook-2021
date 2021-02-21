@@ -51,6 +51,11 @@
 <script>
 // @ is an alias to /src
 import SneakersCard from '@/components/SneakersCard.vue'    // Carte de la sneakers
+import Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
+Vue.use(VueAxios, axios)
 
 export default {
   name: 'Home',       // root name
@@ -103,6 +108,17 @@ export default {
       }
     ]
   }),
+
+  mounted: function() {
+    /* get SneakersCards data */
+    axios.get('ws.php?action=getSneakersCards')
+      .then(function(response) {
+        console.log(response)
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
+  },
 
   methods:{
         log(value){
