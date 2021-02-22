@@ -110,8 +110,11 @@ export default {
   }),
 
   mounted: function() {
+
+  
     /* get SneakersCards data */
-    axios.get('ws.php?action=getSneakersCards')
+   // var headers = {'Access-Control-Allow-Origin': 'http://localhost:8081/ws.php'}
+    axios.get('http://localhost:8081/ws.php?action=getSneakersCards')
       .then(function(response) {
         console.log(response)
       })

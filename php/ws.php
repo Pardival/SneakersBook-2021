@@ -1,10 +1,11 @@
 <?php
     require_once('config.php');
+    header("Access-Control-Allow-Origin: *");
 
     if (isset($_GET['action'])) {
-        $action = htmlspecialchars($_POST['action']);
+        $action = htmlspecialchars($_GET['action']);
 
-        $action($bdd);
+        echo $action($bdd);
     }
 
     /**
