@@ -15,8 +15,11 @@
      */
     function getSneakersCards($bdd) {
         /* Contient la requête */
-        $query = 'SELECT id_sneakers, nom, YEAR(date_sortie), url_couverture
-                    FROM sneakers';
+        $query = 'SELECT id_sneakers, id_modele, nom AS name , libelle AS modele, 
+                         YEAR(date_sortie) AS release_date , url_couverture AS urlImg
+                    FROM sneakers
+                   INNER JOIN modele
+                      ON id_modele = fk_modele';
 
         /* requête préparé */
         $stmt = $bdd->prepare($query);

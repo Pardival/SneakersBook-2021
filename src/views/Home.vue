@@ -10,23 +10,24 @@
                         dense>
         </v-autocomplete>
 
+
         <!-- En tendance  (Chaussures les plus vue durant les dernières 24h -->
-        <v-row justify="center">
+        <!-- <v-row justify="center"> -->
             <!-- Sous Titre -->
-            <p class="text-h4">
+            <!-- <p class="text-h4">
               En tendance
             </p>
           </v-row>
-          <v-row justify="center" class="mb-10">
+          <v-row justify="center" class="mb-10"> -->
             <!-- Sneakers card-->
-            <v-col md="4" sm="6" xs="12" v-for="card in sneakersData" v-bind:key="card.name+' '+card.modele">
+            <!-- <v-col md="4" sm="6" xs="12" v-for="card in sneakersData" v-bind:key="card.name+' '+card.modele">
               <SneakersCard :srcImg="card.urlImg" 
                             :releaseDate="card.release" 
                             :name="card.name" 
                             :modele="card.modele" 
                             :company="card.company" />
             </v-col>
-          </v-row>
+          </v-row> -->
 
           <!-- Book (le dictionnaire) -->
           <v-row justify="center">
@@ -39,7 +40,7 @@
             <v-col md="4" sm="6" xs="12" v-for="card in sneakersData" v-bind:key="card.name+' '+card.modele">
             <!-- Sneakers card-->
               <SneakersCard :srcImg="card.urlImg" 
-                            :releaseDate="card.release" 
+                            :releaseDate="card.release_date" 
                             :name="card.name" 
                             :modele="card.modele" 
                             :company="card.company" />
@@ -65,7 +66,8 @@ export default {
 
   data: () => ({
     /* Contient les informaitons sur les sneakers */
-    sneakersData : [
+    sneakersData : null,
+    sneakersDataa : [
       {
         name : "Inertia",
         modele : "Yezzy Boost 700",
@@ -109,14 +111,13 @@ export default {
     ]
   }),
 
-  mounted: function() {
+  mounted() {
+    var _this = this // Instance Vue
 
-  
     /* get SneakersCards data */
-   // var headers = {'Access-Control-Allow-Origin': 'http://localhost:8081/ws.php'}
     axios.get('http://localhost:8081/ws.php?action=getSneakersCards')
       .then(function(response) {
-        console.log(response)
+        _this.sneakersData = response.data
       })
       .catch(function(error) {
         console.log(error)
