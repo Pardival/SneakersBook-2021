@@ -30,4 +30,24 @@
         $json = json_encode($response);
         return $json;
     }
+
+    /**
+     * WS qui récupère les données des SneakersCards
+     * @param $bdd connexion à la base de donnée
+     * @return résultat de la requête
+     */
+    function getCompanyForSneakersCards($bdd) {
+        /* Contient la requête */
+        $query = 'SELECT * 
+                    FROM sneakers_marque';
+
+        /* requête préparé */
+        $stmt = $bdd->prepare($query);
+        $stmt->execute();
+        $response = $stmt->fetchAll();
+
+        /* Retourne la résponse au format json*/
+        $json = json_encode($response);
+        return $json;
+    }
 ?>

@@ -39,11 +39,7 @@
           <v-row justify="center" class="mb-10 mr-10 ml-10">
             <v-col md="4" sm="6" xs="12" v-for="card in sneakersData" v-bind:key="card.name+' '+card.modele">
             <!-- Sneakers card-->
-              <SneakersCard :srcImg="card.urlImg" 
-                            :releaseDate="card.release_date" 
-                            :name="card.name" 
-                            :modele="card.modele" 
-                            :company="card.company" />
+              <SneakersCard :dataSneakers="card" />
             </v-col>
           </v-row>
       </v-container>
@@ -67,48 +63,7 @@ export default {
   data: () => ({
     /* Contient les informaitons sur les sneakers */
     sneakersData : null,
-    sneakersDataa : [
-      {
-        name : "Inertia",
-        modele : "Yezzy Boost 700",
-        release: "2002",
-        urlImg: "https://cdn.flightclub.com/TEMPLATE/135739/1.jpg",
-        company: [
-          {
-            name : "Addidas"
-          },
-          {
-            name : "Yezzy"
-          }
-        ]
-      },
-      {
-        name : "Chunky Dunky",
-        modele : "Dunk Low",
-        release: "2002",
-        urlImg: "https://images.wave.fr/images//nike_sb_dunk_low_ben_jerrys_date_sortie_infos_1.jpg",
-        company: [
-          {
-            name : "Nike"
-          },
-          {
-            name : "Ben & Jerry's"
-          }
-        ]
-      },
-
-      {
-        name : "Syracuse",
-        modele : "Dunk Low",
-        release: "2002",
-        urlImg: "https://www.lesitedelasneaker.com/wp-content/images/2020/02/nike-dunk-low-syracuse-cu1726-101.jpg",
-        company: [
-          {
-            name : "Nike"
-          }
-        ]
-      }
-    ]
+    companyData : null
   }),
 
   mounted() {
@@ -122,6 +77,23 @@ export default {
       .catch(function(error) {
         console.log(error)
       })
+
+      /* get company data */
+    axios.get('http://localhost:8081/ws.php?action=getCompanyForSneakersCards')
+      .then(function(response) {
+        _this.companyData = response.data
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
+
+      // for(let rangSneakers = 0; rangSneakers < this.rangSneakers.length; rangSneakers++) {
+      //   for (let rangCompany = 0; rangCompany < this.rangCompany.length; rangCompany++) {
+      //     if (this.sneakersData[rangSneakers].id_sneakers == this.companyData[rangCompany].fk_sneakers) {
+        
+      //     }
+      //   }
+      // }
   },
 
   methods:{
