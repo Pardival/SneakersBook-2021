@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <Header/>
+      <Header ref="header" v-if="$route.fullPath != '/'"/>
       <router-view></router-view>
     </v-main>
   </v-app>

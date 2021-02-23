@@ -1,4 +1,20 @@
 <template>
+  <div>
+    <v-toolbar class="mb-6" color="">
+      <v-toolbar-title>SneakersBook</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-text-field filled
+                        solo-inverted
+                        class="mx-4 d-none d-lg-block .d-none d-xl-flex d-md-flex d-sm-flex"
+                        flat
+                        hide-no-data
+                        hide-details
+                        label="Rechercher"
+                        dense
+                        v-model="research" @input="refreshSneakersCards">
+        </v-text-field>
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+    </v-toolbar>
   <v-container class="lighten-5">
         <v-text-field filled
                         solo-inverted
@@ -44,7 +60,8 @@
               <SneakersCard :dataSneakers="card" />
             </v-col>
           </v-row>
-      </v-container>
+    </v-container>
+  </div>
 </template>
 
 <script>
