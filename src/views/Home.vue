@@ -1,14 +1,16 @@
 <template>
   <v-container class="lighten-5">
-        <v-autocomplete filled
+        <v-text-field filled
                         solo-inverted
                         class="d-flex d-sm-none d-xs-flex  mb-5"
                         flat
                         hide-no-data
                         hide-details
                         label="Rechercher"
-                        dense>
-        </v-autocomplete>
+                        dense
+                        v-model="research"
+                        @input="refreshSneakersCards">
+        </v-text-field>
 
 
         <!-- En tendance  (Chaussures les plus vue durant les dernières 24h -->
@@ -62,15 +64,16 @@ export default {
 
   data: () => ({
     /* Contient les informaitons sur les sneakers */
-    sneakersData : null,
-    companyData : null
+    sneakersData : null,        // Contient les données des sneakersCards
+    companyData : null,         // Contient les données des company
+    research: ""              // Contient la chaine de caractère permettant de filtrer sur les sneakers que l'on recherche
   }),
 
   mounted() {
     var _this = this // Instance Vue
 
     /* get SneakersCards data */
-    axios.get('http://localhost:8081/ws.php?action=getSneakersCards')
+    axios.get('http://localhost:8081/ws.php?action=getSneakersCards&research='+_this.research)
       .then(function(response) {
         _this.sneakersData = response.data
       })
@@ -97,10 +100,22 @@ export default {
   },
 
   methods:{
-        log(value){
-          console.log(value)
+    refreshSneakersCards : function() {
+       var _this = this // Instance Vue
 
-        }
+      /* get SneakersCards data */
+      axios.get('http://localhost:8081/ws.php?action=getSneakersCards&research='+_this.research)
+        .then(function(response) {
+          _this.sneakersData = response.data
+        })
+        .catch(function(error) {
+          console.log(error)
+        })   
+    },
+
+    log(value){
+        console.log(value)
     }
+  }
 }
 </script>
