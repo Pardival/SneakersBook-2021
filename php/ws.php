@@ -30,12 +30,15 @@
      */
     function getSneakersCards($bdd, $research) {
         /* Contient la requête */
-        $query = 'SELECT id_sneakers, id_modele, nom AS name , libelle AS modele, 
-                         YEAR(date_sortie) AS release_date , url_couverture AS urlImg
-                    FROM sneakers
-                   INNER JOIN modele
-                      ON id_modele = fk_modele
-                   WHERE nom LIKE :libelle';
+        $query = 'SELECT S.id_sneakers, M.id_modele, M.id_marque AS id_marque,  
+                         MA.nom as companyName, S.nom AS name , M.libelle AS modele, 
+                         YEAR(S.date_sortie) AS release_date , S.url_couverture AS urlImg
+                    FROM sneakers S
+                   INNER JOIN modele M
+                      ON M.id_modele = S.fk_modele
+                   INNER JOIN marque MA
+                      ON MA.id_marque = M.id_marque
+                   WHERE S.nom LIKE :libelle';
 
         /* requête préparé */
         $stmt = $bdd->prepare($query);

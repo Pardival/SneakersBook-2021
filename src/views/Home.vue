@@ -97,23 +97,6 @@ export default {
       .catch(function(error) {
         console.log(error)
       })
-
-      /* get company data */
-    axios.get('http://localhost:8081/ws.php?action=getCompanyForSneakersCards')
-      .then(function(response) {
-        _this.companyData = response.data
-      })
-      .catch(function(error) {
-        console.log(error)
-      })
-
-      // for(let rangSneakers = 0; rangSneakers < this.rangSneakers.length; rangSneakers++) {
-      //   for (let rangCompany = 0; rangCompany < this.rangCompany.length; rangCompany++) {
-      //     if (this.sneakersData[rangSneakers].id_sneakers == this.companyData[rangCompany].fk_sneakers) {
-        
-      //     }
-      //   }
-      // }
   },
 
   methods:{
